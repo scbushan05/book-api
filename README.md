@@ -38,7 +38,7 @@ mvn package
 
 A new WAR file will be generated at `project/target/bookapi-0.0.1-SNAPSHOT.war`, just copy and deploy to your Tomcat.
 
-The app will start running at <http://localhost:8080>.
+The app will start running at <http://localhost:8080/bookapi/>.
 
 ## Explore Rest APIs
 
