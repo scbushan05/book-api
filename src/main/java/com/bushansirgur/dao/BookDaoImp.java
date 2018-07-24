@@ -33,13 +33,8 @@ public class BookDaoImp implements BookDao {
 
    @Override
    public List<Book> list() {
-      Session session = sessionFactory.getCurrentSession();
-      CriteriaBuilder cb = session.getCriteriaBuilder();
-      CriteriaQuery<Book> cq = cb.createQuery(Book.class);
-      Root<Book> root = cq.from(Book.class);
-      cq.select(root);
-      Query<Book> query = session.createQuery(cq);
-      return query.getResultList();
+      List<Book> list = sessionFactory.getCurrentSession().createQuery("from Book").list();
+      return list;
    }
 
    @Override
@@ -53,9 +48,8 @@ public class BookDaoImp implements BookDao {
 
    @Override
    public void delete(long id) {
-      Session session = sessionFactory.getCurrentSession();
-      Book book = session.byId(Book.class).load(id);
-      session.delete(book);
+      Book book = sessionFactory.getCurrentSession().byId(Book.class).load(id);
+      sessionFactory.getCurrentSession().delete(book);
    }
 
 }
